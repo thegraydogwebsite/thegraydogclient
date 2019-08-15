@@ -33,9 +33,6 @@
 					<router-link class="link" to="/about">About Us</router-link>
 				</v-flex>
 				<v-flex xs3>
-					<router-link class="link" to="/login">Admin Log In</router-link>
-				</v-flex>
-				<v-flex xs3>
 					<div>&copy; {{ new Date().getFullYear() }}</div>
 				</v-flex>
 			</v-layout>

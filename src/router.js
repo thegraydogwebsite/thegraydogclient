@@ -3,7 +3,6 @@ import Router from 'vue-router'
 import Home from './views/Home.vue'
 import Gallery from './views/Gallery.vue'
 import Staff from './views/Staff.vue'
-import LogIn from './views/LogIn.vue'
 import Services from './views/Services.vue'
 import About from './views/About.vue'
 
@@ -33,11 +32,6 @@ export default new Router({
       path: "/staff",
       name: "staff",
       component: Staff
-    },
-    {
-      path: "/login",
-      name: "login",
-      component: LogIn
     },
     {
       path: "/services",

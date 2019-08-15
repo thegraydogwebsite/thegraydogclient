@@ -42,7 +42,8 @@ export default {
 		return {
 			staff: [],
 			shows: [],
-			url: "http://localhost:3000"
+			// url: "http://localhost:3000",
+			url: "https://thegraydogserver.herokuapp.com"
 		};
 	},
 	methods: {

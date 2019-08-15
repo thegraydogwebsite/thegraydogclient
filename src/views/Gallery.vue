@@ -32,7 +32,8 @@ export default {
 	name: "Gallery",
 	data() {
 		return {
-			url: "http://localhost:3000",
+			// url: "http://localhost:3000",
+			url: "https://thegraydogserver.herokuapp.com",
 			gallery: []
 		};
 	},

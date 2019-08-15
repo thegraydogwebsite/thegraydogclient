@@ -87,7 +87,8 @@ export default {
 	data() {
 		return {
 			show_arrows: false,
-			url: "http://localhost:3000",
+			// url: "http://localhost:3000",
+			url: "https://thegraydogserver.herokuapp.com",
 			slideshow: [],
 			head_groomer: {},
 		};
