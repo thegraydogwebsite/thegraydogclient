@@ -32,42 +32,21 @@ export default {
 	name: "Gallery",
 	data() {
 		return {
-			gallery: [
-				{
-					src: "https://i.imgur.com/nyxbLq4.jpg"
-				},
-				{
-					src: "https://i.imgur.com/nyxbLq4.jpg"
-				},
-				{
-					src: "https://i.imgur.com/nyxbLq4.jpg"
-				},
-				{
-					src: "https://i.imgur.com/nyxbLq4.jpg"
-				},
-				{
-					src: "https://i.imgur.com/nyxbLq4.jpg"
-				},
-				{
-					src: "https://i.imgur.com/nyxbLq4.jpg"
-				},
-				{
-					src: "https://i.imgur.com/nyxbLq4.jpg"
-				},
-				{
-					src: "https://i.imgur.com/nyxbLq4.jpg"
-				},
-				{
-					src: "https://i.imgur.com/nyxbLq4.jpg"
-				},
-				{
-					src: "https://i.imgur.com/nyxbLq4.jpg"
-				},
-				{
-					src: "https://i.imgur.com/nyxbLq4.jpg"
-				}
-			]
+			url: "http://localhost:3000",
+			gallery: []
 		};
+	},
+	methods: {
+		loadGallery: function() {
+			fetch(`${this.url}/gallery`).then((response) => {
+				response.json().then((data) => {
+					this.gallery = data.gallery;
+				});
+			});
+		}
+	},
+	created() {
+		this.loadGallery();
 	}
 };
 </script>

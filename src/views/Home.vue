@@ -2,8 +2,8 @@
 	<div class="home">
 		<v-carousel interval="3000" hide-delimiters :show-arrows="show_arrows" height="400">
 			<v-carousel-item
-				v-for="picture in interior_pictures"
-				:key="picture.src"
+				v-for="(picture, index) in slideshow"
+				:key="index"
 				:src="picture.src"
 				reverse-transition="fade-transition"
 				transition="fade-transition"
@@ -35,7 +35,12 @@
 				</v-flex>
 				<v-flex xs1 mt-2>
 					<v-layout align-center justify-center>
-						<v-btn rounded color="orange lighten-1" class="white--text" to="/services">Check out our services</v-btn>
+						<v-btn
+							rounded
+							color="orange lighten-1"
+							class="white--text"
+							to="/services"
+						>Check out our services</v-btn>
 					</v-layout>
 				</v-flex>
 			</v-layout>
@@ -57,11 +62,11 @@
 					<v-card>
 						<v-layout align-center>
 							<v-flex xs6>
-								<v-img height="200" src="https://i.imgur.com/iEuGntz.jpg"></v-img>
+								<v-img height="200" :src="head_groomer.src"></v-img>
 							</v-flex>
 							<v-flex xs6>
-								<div class="text-center grey--text text--darken-2 body-1 font-weight-bold">Brittany Hardesty</div>
-								<div class="text-center grey--text text--darken-2 body-1 font-italic">Head Groomer</div>
+								<div class="text-center grey--text text--darken-2 body-1 font-weight-bold">{{head_groomer.name}}</div>
+								<div class="text-center grey--text text--darken-2 body-1 font-italic">{{head_groomer.title}}</div>
 								<router-link
 									to="/staff"
 									class="orange--text text--lighten-1"
@@ -82,30 +87,30 @@ export default {
 	data() {
 		return {
 			show_arrows: false,
-			interior_pictures: [
-				{
-					src: "https://i.imgur.com/zmYsS1L.jpg"
-				},
-				{
-					src: "https://i.imgur.com/Dg4WWAj.jpg"
-				},
-				{
-					src: "https://i.imgur.com/7LcVHFX.jpg"
-				},
-				{
-					src: "https://i.imgur.com/qWtcL8g.jpg"
-				},
-				{
-					src: "https://i.imgur.com/DJv5Tk9.jpg"
-				},
-				{
-					src: "https://i.imgur.com/iEuGntz.jpg"
-				},
-				{
-					src: "https://i.imgur.com/nyxbLq4.jpg"
-				}
-			]
+			url: "http://localhost:3000",
+			slideshow: [],
+			head_groomer: {},
 		};
+	},
+	methods: {
+		loadSlideshow: function() {
+			fetch(`${this.url}/slideshow`).then((response) => {
+				response.json().then(data => {
+					this.slideshow = data.slideshow;
+				});
+			});
+		},
+		loadHeadGroomer: function() {
+			fetch(`${this.url}/headgroomer`).then((response) => {
+				response.json().then(data => {
+					this.head_groomer = data.headgroomer;
+				});
+			});
+		}
+	},
+	created() {
+		this.loadSlideshow();
+		this.loadHeadGroomer();
 	}
 };
 </script>

@@ -20,15 +20,15 @@
 						<div class="text-center grey--text text--darken-2 body-1 font-italic">{{employee.title}}</div>
 						<v-layout justify-center>
 							<v-flex xs3>
-								<v-btn icon small @click="employee.show = !employee.show">
-									<v-icon>mdi-{{employee.show ? "chevron-up" : "chevron-down"}}</v-icon>
+								<v-btn icon small @click="shows[index].show = !shows[index].show">
+									<v-icon>mdi-{{shows[index].show ? "chevron-up" : "chevron-down"}}</v-icon>
 								</v-btn>
 							</v-flex>
 						</v-layout>
 					</v-flex>
 				</v-layout>
 				<v-expand-transition>
-					<div class="pt-3" v-show="employee.show">{{employee.text}}</div>
+					<div class="pt-3" v-show="shows[index].show">{{employee.text}}</div>
 				</v-expand-transition>
 			</v-card>
 		</v-layout>
@@ -40,33 +40,28 @@ export default {
 	name: "Staff",
 	data() {
 		return {
-			staff: [
-				{
-					src: "https://i.imgur.com/Dg4WWAj.jpg",
-					name: "Brittany Hardesty",
-					title: "Head Groomer",
-					text:
-						"My wildest dreams are coming true! I went into the first Lovin’ Arms location back in 2012 when it was a tiny 1,700 square foot shop that sold FISH! I quickly became Carol’s very first employee. At the time I had no idea that the store would become my forever home. In 2016 Carol moved our store into the 5,000 square foot building that now stands in downtown St. George. Customers would ask, ‘Are you the owner?’ to which I’d always reply, ‘No, but hopefully one day!’ Well… ‘one day’ is finally here. I am officially the owner of the largest independent pet store in Utah and I couldn’t feel more grateful!",
-					show: false
-				},
-				{
-					src: "https://i.imgur.com/DJv5Tk9.jpg",
-					name: "Brittany Hardesty",
-					title: "Head Groomer",
-					text:
-						"My wildest dreams are coming true! I went into the first Lovin’ Arms location back in 2012 when it was a tiny 1,700 square foot shop that sold FISH! I quickly became Carol’s very first employee. At the time I had no idea that the store would become my forever home. In 2016 Carol moved our store into the 5,000 square foot building that now stands in downtown St. George. Customers would ask, ‘Are you the owner?’ to which I’d always reply, ‘No, but hopefully one day!’ Well… ‘one day’ is finally here. I am officially the owner of the largest independent pet store in Utah and I couldn’t feel more grateful!",
-					show: false
-				},
-				{
-					src: "https://i.imgur.com/zmYsS1L.jpg",
-					name: "Brittany Hardesty",
-					title: "Head Groomer",
-					text:
-						"My wildest dreams are coming true! I went into the first Lovin’ Arms location back in 2012 when it was a tiny 1,700 square foot shop that sold FISH! I quickly became Carol’s very first employee. At the time I had no idea that the store would become my forever home. In 2016 Carol moved our store into the 5,000 square foot building that now stands in downtown St. George. Customers would ask, ‘Are you the owner?’ to which I’d always reply, ‘No, but hopefully one day!’ Well… ‘one day’ is finally here. I am officially the owner of the largest independent pet store in Utah and I couldn’t feel more grateful!",
-					show: false
-				}
-			]
+			staff: [],
+			shows: [],
+			url: "http://localhost:3000"
 		};
+	},
+	methods: {
+		loadStaff: function() {
+			fetch(`${this.url}/staff`).then(response => {
+				response.json().then(data => {
+					this.staff = data.staff;
+					this.setShows(this.staff.length);
+				});
+			});
+		},
+		setShows: function(size) {
+			for (var i = 0; i < size; i++) {
+				this.shows.push({ show: false });
+			}
+		}
+	},
+	created() {
+		this.loadStaff();
 	}
 };
 </script>
