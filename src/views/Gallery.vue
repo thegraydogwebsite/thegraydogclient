@@ -13,7 +13,7 @@
 			<v-container grid-list-sm fluid>
 				<v-layout wrap>
 					<v-flex xs6 d-flex child-flex v-for="(picture, index) in gallery" :key="index">
-						<v-img :src="picture.src">
+						<v-img :src="picture.src" height="150">
 							<template v-slot:placeholder>
 								<v-layout fill-height align-center justify-center ma-0>
 									<v-progress-circular indeterminate color="grey lighten-5"></v-progress-circular>
