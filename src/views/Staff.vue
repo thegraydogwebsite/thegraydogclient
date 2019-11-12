@@ -13,13 +13,13 @@
 			<v-card v-for="(employee, index) in staff" :key="index" class="pa-3 ma-4">
 				<v-layout align-center>
 					<v-flex xs6>
-						<v-img height="150" :src="employee.src"></v-img>
+						<v-img :height="imageHeight" :src="employee.src" position="top center"></v-img>
 					</v-flex>
 					<v-flex xs6>
 						<div class="text-center grey--text text--darken-2 body-1 font-weight-bold">{{employee.name}}</div>
 						<div class="text-center grey--text text--darken-2 body-1 font-italic">{{employee.title}}</div>
-						<v-layout justify-center>
-							<v-flex xs3>
+						<v-layout justify-center column align-center>
+							<v-flex>
 								<v-btn icon small @click="shows[index].show = !shows[index].show">
 									<v-icon>mdi-{{shows[index].show ? "chevron-up" : "chevron-down"}}</v-icon>
 								</v-btn>
@@ -58,6 +58,22 @@ export default {
 		setShows: function(size) {
 			for (var i = 0; i < size; i++) {
 				this.shows.push({ show: false });
+			}
+		}
+	},
+	computed: {
+		imageHeight() {
+			switch (this.$vuetify.breakpoint.name) {
+				case "xs":
+					return "220px";
+				case "sm":
+					return "300px";
+				case "md":
+					return "300px";
+				case "lg":
+					return "400px";
+				case "xl":
+					return "500px";
 			}
 		}
 	},

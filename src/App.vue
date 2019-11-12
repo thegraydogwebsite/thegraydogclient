@@ -1,10 +1,17 @@
 <template>
 	<v-app>
-		<NavBar></NavBar>
 		<v-content>
-			<router-view></router-view>
+			<NavBar></NavBar>
+		<!-- {{width}} -->
+			<v-layout column align-center class="white">
+				<v-flex>
+					<v-card :width="appWidth" flat>
+						<router-view></router-view>
+					</v-card>
+				</v-flex>
+			</v-layout>
+			<Footer></Footer>
 		</v-content>
-		<Footer></Footer>
 	</v-app>
 </template>
 
@@ -16,10 +23,26 @@ export default {
 	name: "App",
 	components: {
 		NavBar,
-		Footer
+		Footer,
 	},
 	data: () => {
 		return {};
+	},
+	computed: {
+		appWidth() {
+			switch (this.$vuetify.breakpoint.name) {
+				case "xs":
+					return "";
+				case "sm":
+					return "600px";
+				case "md":
+					return "800px";
+				case "lg":
+					return "800px";
+				case "xl":
+					return "1000px";
+			}
+		}
 	}
 };
 </script>

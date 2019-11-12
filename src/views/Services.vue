@@ -54,7 +54,7 @@
 				</v-flex>
 			</v-layout>
 			<v-layout column justify-center align-left>
-				<v-flex xs12>Includes: Bath, Nail Trim, Anal Glands, Ear Cleaning, 15 Minute Dematt</v-flex>
+				<v-flex xs12 class="text-center">Includes: Bath, Nail Trim, Anal Glands, Ear Cleaning, 15 Minute Dematt</v-flex>
 			</v-layout>
 			<v-layout justify-center>
 				<v-flex xs5>Small</v-flex>
@@ -85,7 +85,7 @@
 			<v-layout column justify-center align-left>
 				<v-flex
 					xs12
-					class="font-italic"
+					class="font-italic text-center"
 				>*Pricing may change due to hair length, matting, and difficulty of pet.</v-flex>
 			</v-layout>
 		</v-card>
@@ -100,14 +100,14 @@
 				<v-flex xs2 class="font-weight-bold">$10.00</v-flex>
 			</v-layout>
 			<v-layout column align-left justify-center>
-				<v-flex xs12>Premium Shampoo, Conditioner, teeth brushing.</v-flex>
+				<v-flex xs12 class="text-center">Premium Shampoo, Conditioner, teeth brushing.</v-flex>
 			</v-layout>
 			<v-layout justify-center class="pt-2">
 				<v-flex xs7 class="font-weight-bold">Premium Spa Package:</v-flex>
 				<v-flex xs2 class="font-weight-bold">$20.00</v-flex>
 			</v-layout>
 			<v-layout column align-left justify-center>
-				<v-flex xs12>Premium Shampoo, Conditioner, teeth brushing dremel, paw pad cream.</v-flex>
+				<v-flex xs12 class="text-center">Premium Shampoo, Conditioner, teeth brushing dremel, paw pad cream.</v-flex>
 			</v-layout>
 		</v-card>
 		<v-card flat tile class="grey--text text--darken-2 pa-4">
@@ -160,7 +160,7 @@
 				</v-flex>
 			</v-layout>
 			<v-layout column justify-center align-left>
-				<v-flex xs12>Includes: Bath, Shampoo, Towels, Blow Dryer, Brushes</v-flex>
+				<v-flex xs12 class="text-center">Includes: Bath, Shampoo, Towels, Blow Dryer, Brushes</v-flex>
 			</v-layout>
 			<v-layout justify-center>
 				<v-flex xs5>Small</v-flex>

@@ -45,8 +45,8 @@
 				</v-flex>
 			</v-layout>
 		</v-card>
-		<v-card flat tile height="400" color="grey lighten-4">
-			<v-layout column justify-center align-center fill-height>
+  <v-card flat tile :height="cardHeight" color="grey lighten-4">
+			<v-layout column justify-center align-center fill-height class="white">
 				<v-flex xs1>
 					<div
 						class="text-center text-uppercase grey--text text--darken-2 display-1 font-weight-bold"
@@ -62,10 +62,12 @@
 					<v-card>
 						<v-layout align-center>
 							<v-flex xs6>
-								<v-img height="200" :src="head_groomer.src"></v-img>
+								<v-img :height="imageHeight" :src="head_groomer.src" position="top center"></v-img>
 							</v-flex>
 							<v-flex xs6>
-								<div class="text-center grey--text text--darken-2 body-1 font-weight-bold">{{head_groomer.name}}</div>
+								<div
+									class="text-center grey--text text--darken-2 body-1 font-weight-bold"
+								>{{head_groomer.name}}</div>
 								<div class="text-center grey--text text--darken-2 body-1 font-italic">{{head_groomer.title}}</div>
 								<router-link
 									to="/staff"
@@ -90,24 +92,54 @@ export default {
 			// url: "http://localhost:3000",
 			url: "https://thegraydogserver.herokuapp.com",
 			slideshow: [],
-			head_groomer: {},
+			head_groomer: {}
 		};
 	},
 	methods: {
 		loadSlideshow: function() {
-			fetch(`${this.url}/slideshow`).then((response) => {
+			fetch(`${this.url}/slideshow`).then(response => {
 				response.json().then(data => {
 					this.slideshow = data.slideshow;
 				});
 			});
 		},
 		loadHeadGroomer: function() {
-			fetch(`${this.url}/headgroomer`).then((response) => {
+			fetch(`${this.url}/headgroomer`).then(response => {
 				response.json().then(data => {
 					this.head_groomer = data.headgroomer;
 				});
 			});
 		}
+	},
+	computed: {
+		imageHeight() {
+			switch (this.$vuetify.breakpoint.name) {
+				case "xs":
+					return "200px";
+				case "sm":
+					return "300px";
+				case "md":
+					return "300px";
+				case "lg":
+					return "350px";
+				case "xl":
+					return "400px";
+			}
+		},
+		cardHeight() {
+			switch (this.$vuetify.breakpoint.name) {
+				case "xs":
+					return "350px";
+				case "sm":
+					return "450px";
+				case "md":
+					return "550px";
+				case "lg":
+					return "550px";
+				case "xl":
+					return "750px";
+			}
+		},
 	},
 	created() {
 		this.loadSlideshow();
